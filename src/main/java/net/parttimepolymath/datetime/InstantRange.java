@@ -92,8 +92,6 @@ public class InstantRange implements Collection<Instant> {
         return String.format("InstantRange [fromInstant=%s, toInstant=%s, interval=%s]", fromInstant, toInstant, interval);
     }
 
-    // TODO: add hash and equals here
-
     /**
      * return the number of ticks the range should have. Note that this is not completely in agreement with isEmpty(), because
      * an empty range (ie where from and to are the same) will always have at least 1 tick, but would be reported as being
@@ -171,7 +169,10 @@ public class InstantRange implements Collection<Instant> {
     }
 
     /**
-     * returns true if the object is a non-null Instant that falls inside the range.
+     * returns true if the object is a non-null Instant that falls inside the range. Note that for
+     * correctness of the semantics of 'contains', only Instant objects that fall on one of the expected
+     * 'ticks' will be deemed to be contained. For example if the range tick interval is HOURS, then you could expect
+     * 2016-02-14T09:00:00Z to be in the range, but 2016-02-14T09:00:01Z not to be in the range.
      * 
      * @param o the object to be tested.
      */
@@ -181,9 +182,13 @@ public class InstantRange implements Collection<Instant> {
             return false;
         }
 
-        // TODO revisit this, strictly should only match if the instant provided is one of the ticks.
         Instant instant = (Instant) o;
-        return instant.equals(fromInstant) || instant.equals(toInstant) || (instant.isAfter(fromInstant) && instant.isBefore(toInstant));
+        if (instant.truncatedTo(interval).equals(instant)) {
+            return instant.equals(fromInstant) || instant.equals(toInstant)
+                    || (instant.isAfter(fromInstant) && instant.isBefore(toInstant));
+        } else {
+            return false;
+        }
     }
 
     /**

@@ -159,8 +159,8 @@ public class InstantRangeTest {
     @Test
     public void testContains() {
         assertFalse(instance.contains(null));
-        assertTrue(instance.contains(from.plusSeconds(500)));
-        assertFalse(instance.contains(to.plusSeconds(500)));
+        assertTrue(instance.contains(from.plus(1, ChronoUnit.HOURS).truncatedTo(ChronoUnit.HOURS)));
+        assertFalse(instance.contains(to.plus(1, ChronoUnit.HOURS).truncatedTo(ChronoUnit.HOURS)));
         assertFalse(instance.contains("smelly fish"));
         assertTrue(instance.contains(to.truncatedTo(ChronoUnit.HOURS)));
         assertTrue(instance.contains(from.truncatedTo(ChronoUnit.HOURS)));
@@ -170,8 +170,8 @@ public class InstantRangeTest {
     public void testContainsAll() {
         assertFalse(instance.containsAll(null));
 
-        assertTrue(instance
-                .containsAll(Arrays.asList(from.plusSeconds(500), to.truncatedTo(ChronoUnit.HOURS), from.truncatedTo(ChronoUnit.HOURS))));
+        assertTrue(instance.containsAll(Arrays.asList(from.plus(1, ChronoUnit.HOURS).truncatedTo(ChronoUnit.HOURS),
+                to.truncatedTo(ChronoUnit.HOURS), from.truncatedTo(ChronoUnit.HOURS))));
 
         assertFalse(instance.containsAll(Arrays.asList(Instant.now().plusSeconds(500), from.plusSeconds(500),
                 to.truncatedTo(ChronoUnit.HOURS), from.truncatedTo(ChronoUnit.HOURS))));
