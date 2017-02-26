@@ -17,17 +17,14 @@
     </scm>
 
     <distributionManagement>
-        <repository>
-            <id>central</id>
-            <name>ip-172-31-6-67-releases</name>
-            <url>http://54.209.160.169:8081/artifactory/libs-release-local</url>
-        </repository>
-
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>ip-172-31-6-67-snapshots</name>
-            <url>http://54.209.160.169:8081/artifactory/libs-snapshot-local</url>
-        </snapshotRepository>
+      <repository>
+        <id>release</id>
+        <url>http://ec2-52-56-175-37.eu-west-2.compute.amazonaws.com:8080/repository/release/</url>
+      </repository>
+      <snapshotRepository>
+        <id>snapshots</id>
+        <url>http://ec2-52-56-175-37.eu-west-2.compute.amazonaws.com:8080/repository/snapshots/</url>
+      </snapshotRepository>
     </distributionManagement>
 
     <organization>
