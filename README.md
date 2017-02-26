@@ -18,7 +18,7 @@ mvn clean package
 After a bit of grinding, the JAR should be available at
 
 ```
-target/TimeUtility-1.0-SNAPSHOT.jar 
+target/TimeUtility-1.0-SNAPSHOT.jar
 ```
 
 A site report can be built locally as well, which will provide you with JavaDoc and test coverage details:
@@ -35,7 +35,7 @@ target/site/index.html
 **Note:** A current release version can be found in my private Artifactory at the URL below. There are instructions there for how to include this repository in your build cycle.
 
 ```
-http://54.209.160.169:8081/artifactory/webapp/#/home
+http://ec2-52-56-175-37.eu-west-2.compute.amazonaws.com:8080/#welcome
 ```
 
 ## Use
