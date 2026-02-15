@@ -60,3 +60,15 @@ Any of the parameters in the constructor can be null, the object will sort out d
 -  'unit' defaults to HOURS
 
 One thing that is not _entirely_ obvious is that not all `ChronoUnit` can be used - for whatever reason the Java 8 date/time package puts some rather unintuitive restrictions on what can be applied to an `Instant`, and in practice no unit larger than DAYS can be used. At a later version I may put some constraints around this parameter to avoid unexpected exceptions during construction.
+
+## License
+
+Copyright 2026 Little Dog Digital
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
+
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
